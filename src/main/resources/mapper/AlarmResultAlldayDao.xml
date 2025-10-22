@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.mobile.outalarm2.dao.AlarmResultAlldayDao">
+
+    <insert id="insert">
+        INSERT INTO public.${tableName}
+            ("key", "result", ds, src_ip, dst_ip, event_name, last_time)
+        VALUES (#{entity.key},#{entity.result},#{entity.ds},#{entity.srcIp},#{entity.dstIp},#{entity.eventName},#{entity.lastTime});
+    </insert>
+
+
+    <update id="createTable">
+        CREATE TABLE IF NOT EXISTS public.${tableName} (
+                                                               "key" varchar NULL,
+                                                               "result" varchar NULL,
+                                                               ds varchar NULL,
+                                                               src_ip varchar NULL,
+                                                               dst_ip varchar NULL,
+                                                               event_name varchar NULL,
+                                                               last_time timestamp NULL
+        )
+    </update>
+</mapper>
+
