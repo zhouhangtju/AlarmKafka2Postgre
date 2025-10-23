@@ -36,10 +36,10 @@ public class KafkaConsumer {
     @Autowired
     private AlarmResultDao alarmResultDao;
 
-    @KafkaListener(topics = TOPIC_TEST)
+    @KafkaListener(topics = TOPIC_TEST,  concurrency = "6")
     @Transactional
     public void topic_alarm(List<String> messages, Acknowledgment ack) {
-        log.info("获取到kakfa消息条数{}", messages.size());
+        log.info("获取到kakfa消息条数{},线程{}", messages.size(), Thread.currentThread().getName());
        // System.out.printf("获取到kakfa消息条数");
         Optional message = Optional.ofNullable(messages);
 
